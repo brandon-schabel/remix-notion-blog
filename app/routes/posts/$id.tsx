@@ -14,7 +14,7 @@ export function headers() {
     // - stale-while-revalidate for 600
     // - cache is only fresh for a second, and then cache is regenerated on next request
     // - serve cache when rebuilding for always fast responses
-    "Cache-Control": `public, max-age=${tenMinutes}, s-maxage=1 stale-while-revalidate=${week}`,
+    "Cache-Control": `public, max-age=${tenMinutes}, s-maxage=600 stale-while-revalidate=${week}`,
   };
 }
 
