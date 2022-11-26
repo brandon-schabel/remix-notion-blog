@@ -38,6 +38,5 @@ export const notionSearch = async (query: string) => {
       timestamp: "last_edited_time",
     },
   });
-  console.log(response);
   return response;
 };
