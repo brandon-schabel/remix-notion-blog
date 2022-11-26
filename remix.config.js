@@ -10,4 +10,9 @@ module.exports = {
   // assetsBuildDirectory: "public/build",
   // serverBuildPath: "api/index.js",
   // publicPath: "/build/",
+  serverDependenciesToBundle: [
+    "react-syntax-highlighter",
+    "react-syntax-highlighter/*",
+    "react-syntax-highlighter/dist/esm/styles/prism",
+  ],
 };

@@ -1,8 +1,9 @@
-import type { LoaderArgs } from "@remix-run/node";
+import type { LoaderArgs, MetaFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import { Fragment } from "react";
 import { retrieveNotionBlock, retrieveNotionPage } from "~/notion.server";
 import { renderBlock, Text } from "~/utils/renderBlock";
+import { PageImage } from "..";
 
 const tenMinutes = 10 * 60;
 const week = 7 * 24 * 60 * 60;
@@ -18,6 +19,15 @@ export function headers() {
   };
 }
 
+export const meta: MetaFunction = ({ data }) => {
+
+  return {
+    charset: "utf-8",
+    title: data?.page?.properties?.Name?.title[0]?.plain_text ||"Blog Article",
+    viewport: "width=device-width,initial-scale=1",
+  };
+};
+
 export async function loader({ request, params }: LoaderArgs) {
   const page = await retrieveNotionPage(params.id || "");
 
@@ -28,21 +38,24 @@ export async function loader({ request, params }: LoaderArgs) {
 
     blocks = blocksResult.results;
   } catch (e) {
-    console.log(e);
+    console.error(e);
   }
+
   return { page, blocks };
 }
 
 export default function () {
   const { page, blocks } = useLoaderData<typeof loader>();
 
+
   return (
     <div className="w-full flex justify-center">
       <div className="lg:max-w-5xl">
-        <div className="flex justify-center font-bold text-4xl">
+        <div className="flex flex-col justify-center items-center font-bold text-4xl">
           <h1>
             <Text text={page.properties.Name.title} />
           </h1>
+          <PageImage page={page} />
         </div>
         <section>
           {blocks.map((block) => (

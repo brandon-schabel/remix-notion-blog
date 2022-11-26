@@ -1,6 +1,8 @@
 import { useFetcher } from "@remix-run/react";
 import classNames from "classnames";
 import { Fragment, useEffect } from "react";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 export const Text = ({ text }) => {
   if (!text) {
@@ -33,11 +35,7 @@ const ClientBlock = ({ id }) => {
   const fetcher = useFetcher();
   // will load block data and children and render it
 
-
-  console.log({ id });
-
   useEffect(() => {
-    console.log("got here");
     fetcher.load("/api/get-block/" + id);
   }, [id]);
 
@@ -53,8 +51,6 @@ const ClientBlock = ({ id }) => {
 export const renderBlock = (block) => {
   const { type, id } = block;
   const value = block[type];
-
-  console.log({ block });
 
   switch (type) {
     case "paragraph":
@@ -98,7 +94,6 @@ export const renderBlock = (block) => {
         </div>
       );
     case "toggle":
-      console.log("toggle", JSON.stringify(value, null, 2));
       return (
         <details>
           <summary>
@@ -122,6 +117,31 @@ export const renderBlock = (block) => {
           <img src={src} alt={caption} />
           {caption && <figcaption>{caption}</figcaption>}
         </figure>
+      );
+    case "code":
+      return (
+        <div className="relative">
+          <button
+            className="btn bg-slate-700 absolute text-white right-0 p-2 rounded-md"
+            onClick={() => {
+              navigator.clipboard.writeText(value?.rich_text[0]?.plain_text);
+            }}
+          >
+            Copy
+          </button>
+          <div className="max-w-full overflow-scroll">
+            <SyntaxHighlighter
+              language="typescript"
+              style={atomDark}
+              // className="overflow-scroll"
+              // customStyle={{
+              //   overflowX: "scroll",
+              // }}
+            >
+              {value?.rich_text[0]?.plain_text}
+            </SyntaxHighlighter>
+          </div>
+        </div>
       );
     default:
       return `❌ Unsupported block (${
