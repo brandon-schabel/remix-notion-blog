@@ -1,8 +1,8 @@
 import { useFetcher } from "@remix-run/react";
 import classNames from "classnames";
 import { Fragment, useEffect } from "react";
-// import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-// import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 export const Text = ({ text }) => {
   if (!text) {
@@ -119,31 +119,31 @@ export const renderBlock = (block) => {
         </figure>
       );
     case "code":
-      return null
-      // return (
-      //   <div className="relative">
-      //     <button
-      //       className="btn bg-slate-700 absolute text-white right-0 p-2 rounded-md"
-      //       onClick={() => {
-      //         navigator.clipboard.writeText(value?.rich_text[0]?.plain_text);
-      //       }}
-      //     >
-      //       Copy
-      //     </button>
-      //     <div className="max-w-full overflow-scroll">
-      //       <SyntaxHighlighter
-      //         language="typescript"
-      //         style={atomDark}
-      //         // className="overflow-scroll"
-      //         // customStyle={{
-      //         //   overflowX: "scroll",
-      //         // }}
-      //       >
-      //         {value?.rich_text[0]?.plain_text}
-      //       </SyntaxHighlighter>
-      //     </div>
-      //   </div>
-      // );
+      // return null;
+      return (
+        <div className="relative">
+          <button
+            className="btn bg-slate-700 absolute text-white right-0 p-2 rounded-md"
+            onClick={() => {
+              navigator.clipboard.writeText(value?.rich_text[0]?.plain_text);
+            }}
+          >
+            Copy
+          </button>
+          <div className="max-w-full overflow-scroll">
+            <SyntaxHighlighter
+              language="typescript"
+              style={atomDark}
+              // className="overflow-scroll"
+              // customStyle={{
+              //   overflowX: "scroll",
+              // }}
+            >
+              {value?.rich_text[0]?.plain_text}
+            </SyntaxHighlighter>
+          </div>
+        </div>
+      );
     default:
       return `❌ Unsupported block (${
         type === "unsupported" ? "unsupported by Notion API" : type
