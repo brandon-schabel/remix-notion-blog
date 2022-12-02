@@ -47,6 +47,10 @@ export async function loader({ request, params }: LoaderArgs) {
 export default function () {
   const { page, blocks } = useLoaderData<typeof loader>();
 
+  if(typeof window === "undefined") {
+    return null
+  }
+
 
   return (
     <div className="w-full flex justify-center">
