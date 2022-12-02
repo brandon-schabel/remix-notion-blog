@@ -13,6 +13,7 @@ specifiers:
   '@types/react-dom': ^18.0.8
   '@vercel/node': ^2.6.2
   autoprefixer: ^10.4.13
+  c-like: ^1.2.0
   classnames: ^2.3.2
   concurrently: ^7.5.0
   eslint: ^8.27.0
@@ -33,6 +34,7 @@ dependencies:
   '@remix-run/react': 1.7.5_biqbaboplfbrettd7655fr4n2y
   '@remix-run/vercel': 1.7.5_lplf4c5c6rnz4qhkbn46yx7ery
   '@vercel/node': 2.6.3
+  c-like: 1.2.0
   classnames: 2.3.2
   fault: 2.0.1
   format: 0.2.2
@@ -2605,6 +2607,11 @@ packages:
     resolution: {integrity: sha512-/Nf7TyzTx6S3yRJObOAV7956r8cr2+Oj8AC5dt8wSP3BQAoeX58NoHyCU8P8zGkNXStjTSi6fzO6F0pBdcYbEg==}
     engines: {node: '>= 0.8'}
     dev: true
+
+  /c-like/1.2.0:
+    resolution: {integrity: sha512-CRKxScVKBX6UG9YtmbigU1/BB2Icrwl5LiyqdKO7ZiymxzuPYysH/RfyaSAd6RG7wppIo1EFKJNKR5OniDDvgw==}
+    hasBin: true
+    dev: false
 
   /cacache/15.3.0:
     resolution: {integrity: sha512-VVdYzXEn+cnbXpFgWs5hTT7OScegHVmLhJIR8Ufqk3iFD6A6j5iSX1KuBTfNEv4tdJWE2PzA6IVFtcLC7fN9wQ==}
