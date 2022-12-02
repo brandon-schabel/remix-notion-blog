@@ -14,5 +14,6 @@ module.exports = {
     "react-syntax-highlighter",
     "react-syntax-highlighter/*",
     "react-syntax-highlighter/dist/esm/styles/prism",
+    'lowlight'
   ],
 };
