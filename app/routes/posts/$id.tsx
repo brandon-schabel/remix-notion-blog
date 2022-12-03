@@ -4,6 +4,7 @@ import { Fragment } from "react";
 import { retrieveNotionBlock, retrieveNotionPage } from "~/notion.server";
 import { renderBlock, Text } from "~/utils/renderBlock";
 import { PageImage } from "..";
+import prismaCss from '../../styles/prism.css';
 
 const tenMinutes = 10 * 60;
 const week = 7 * 24 * 60 * 60;
@@ -17,6 +18,12 @@ export function headers() {
     // - serve cache when rebuilding for always fast responses
     "Cache-Control": `public, max-age=${tenMinutes}, s-maxage=600 stale-while-revalidate=${week}`,
   };
+}
+
+export function links() {
+  return [
+    { rel: "stylesheet", href: prismaCss },
+  ];
 }
 
 export const meta: MetaFunction = ({ data }) => {

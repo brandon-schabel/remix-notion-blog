@@ -4,6 +4,7 @@ import { Link, useActionData, useLoaderData } from "@remix-run/react";
 import classNames from "classnames";
 import { notionSearch, retrieveNotionDatabase } from "~/notion.server";
 import { Text } from "~/utils/renderBlock";
+import prismCss from "../styles/prism.css";
 
 const tenMinutes = 10 * 60;
 const week = 7 * 24 * 60 * 60;
@@ -17,6 +18,10 @@ export function headers() {
     // - serve cache when rebuilding for always fast responses
     "Cache-Control": `public, max-age=${tenMinutes}, s-maxage=600 stale-while-revalidate=${week}`,
   };
+}
+
+export function links() {
+  return [{ rel: "stylesheet", href: prismCss }];
 }
 
 export async function action({ request }: ActionArgs) {

@@ -1,8 +1,13 @@
 import { useFetcher } from "@remix-run/react";
 import classNames from "classnames";
+import Prism from 'prismjs';
 import { Fragment, useEffect } from "react";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+Prism.manual = true;
+
+if(typeof window !== "undefined") {
+  window.Prism = Prism;
+  window.Prism.manual = true
+}
 
 export const Text = ({ text }) => {
   if (!text) {
@@ -131,7 +136,11 @@ export const renderBlock = (block) => {
             Copy
           </button>
           <div className="max-w-full overflow-scroll">
-            <SyntaxHighlighter
+            <pre className="language-javascript">
+              {value?.rich_text[0]?.plain_text}
+              </pre>
+
+            {/* <SyntaxHighlighter
               language="typescript"
               style={atomDark}
               // className="overflow-scroll"
@@ -140,7 +149,7 @@ export const renderBlock = (block) => {
               // }}
             >
               {value?.rich_text[0]?.plain_text}
-            </SyntaxHighlighter>
+            </SyntaxHighlighter> */}
           </div>
         </div>
       );
