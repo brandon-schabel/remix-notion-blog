@@ -4,7 +4,9 @@ export const notion = new Client({ auth: process?.env?.NOTION_API_KEY });
 export const retrieveNotionDatabase = async (databaseId: string) => {
   const response = await notion.databases.query({
     database_id: databaseId,
+    // sort by the most recently created posts
     sorts: [{ property: "Created", direction: "ascending" }],
+    // filter out any posts that are not published
     filter: { property: "Public", checkbox: { equals: true } },
   });
 
@@ -13,12 +15,6 @@ export const retrieveNotionDatabase = async (databaseId: string) => {
 
 export const retrieveNotionPage = async (pageId: string) => {
   const response = await notion.pages.retrieve({ page_id: pageId });
-
-  return response;
-};
-
-export const retrieveNotionPageNew = async (pageId: string) => {
-  const response = await notionApiNew.getPage(pageId);
 
   return response;
 };

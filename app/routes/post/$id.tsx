@@ -1,44 +1,35 @@
 import type { LoaderArgs, MetaFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import { Fragment } from "react";
-import { retrieveNotionBlock, retrieveNotionPage } from "~/notion.server";
-import { renderBlock, Text } from "~/utils/renderBlock";
-import { PageImage } from "..";
-import prismaCss from '../../styles/prism.css';
+import { PageImage } from "~/components/page-image";
+import { Text } from "~/components/text";
+import { tenMinutes, week } from "~/constants/caching-times";
+import { retrieveNotionBlock, retrieveNotionPage } from "~/utils/notion.server";
+import { renderBlock } from "~/utils/render-block";
+import prismCss from "../../styles/prism.css";
 
-const tenMinutes = 10 * 60;
-const week = 7 * 24 * 60 * 60;
+export function links() {
+  return [{ rel: "stylesheet", href: prismCss }];
+}
 
 export function headers() {
   return {
-    // - browser cache for 10 minutes
-    // - CDN for 1 second (can purge if needed)
-    // - stale-while-revalidate for 600
-    // - cache is only fresh for a second, and then cache is regenerated on next request
-    // - serve cache when rebuilding for always fast responses
     "Cache-Control": `public, max-age=${tenMinutes}, s-maxage=600 stale-while-revalidate=${week}`,
   };
 }
 
-export function links() {
-  return [
-    { rel: "stylesheet", href: prismaCss },
-  ];
-}
-
 export const meta: MetaFunction = ({ data }) => {
-
   return {
     charset: "utf-8",
-    title: data?.page?.properties?.Name?.title[0]?.plain_text ||"Blog Article",
+    title: data?.page?.properties?.Name?.title[0]?.plain_text || "Blog Article",
     viewport: "width=device-width,initial-scale=1",
   };
 };
 
-export async function loader({ request, params }: LoaderArgs) {
+export async function loader({ params }: LoaderArgs) {
   const page = await retrieveNotionPage(params.id || "");
 
-  let blocks = [];
+  let blocks: any[] = [];
 
   try {
     const blocksResult = await retrieveNotionBlock(page.id);
@@ -54,21 +45,19 @@ export async function loader({ request, params }: LoaderArgs) {
 export default function () {
   const { page, blocks } = useLoaderData<typeof loader>();
 
-  if(typeof window === "undefined") {
-    return null
-  }
-
-
   return (
     <div className="w-full flex justify-center">
       <div className="lg:max-w-5xl">
         <div className="flex flex-col justify-center items-center font-bold text-4xl">
           <h1>
-            <Text text={page.properties.Name.title} />
+            {/* render the page title */}
+            <Text text={page?.properties?.Name.title} />
           </h1>
+          {/* page image component */}
           <PageImage page={page} />
         </div>
         <section>
+          {/* iterate through all blocks and render out all the data */}
           {blocks.map((block) => (
             <Fragment key={block.id}>{renderBlock(block)}</Fragment>
           ))}
