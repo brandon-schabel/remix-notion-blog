@@ -40,23 +40,24 @@ export const Text = ({ text }) => {
 
 export const CodeBlock = ({ text }: { text: string }) => {
   useEffect(() => {
-    if(typeof window !== "undefined") {
+    if (typeof window !== "undefined") {
       Prism.highlightAll();
     }
-  },[])
+  }, []);
   return (
-    <div className="relative">
+    <div className="relative flex justify-center">
       <button
-        className="btn bg-slate-700 absolute text-white right-0 p-2 rounded-md"
+        className="btn bg-slate-700 absolute text-white right-2 p-2 rounded-md"
         onClick={() => {
           navigator.clipboard.writeText(text);
         }}
       >
         Copy
       </button>
-      <div className="max-w-full overflow-scroll">
-        <pre className="language-tsx">
-          <code className="language-tsx">{text}</code>
+      {/* <div className="max-w-full "> */}
+      <div className="max-w-[90vw] lg:max-w-full w-full">
+        <pre className="language-tsx ">
+          <code className="language-tsx ">{text}</code>
         </pre>
 
         {/* <SyntaxHighlighter
@@ -69,6 +70,7 @@ export const CodeBlock = ({ text }: { text: string }) => {
             >
               {text}
             </SyntaxHighlighter> */}
+        {/* </div> */}
       </div>
     </div>
   );
@@ -165,36 +167,36 @@ export const renderBlock = (block) => {
       // return null;
 
       return <CodeBlock text={value?.rich_text[0]?.plain_text} />;
-      // return (
-      //   <div className="relative">
-      //     <button
-      //       className="btn bg-slate-700 absolute text-white right-0 p-2 rounded-md"
-      //       onClick={() => {
-      //         navigator.clipboard.writeText(value?.rich_text[0]?.plain_text);
-      //       }}
-      //     >
-      //       Copy
-      //     </button>
-      //     <div className="max-w-full overflow-scroll">
-      //       <pre className="language-js">
-      //         <code className="language-js">
-      //           {value?.rich_text[0]?.plain_text}
-      //         </code>
-      //       </pre>
+    // return (
+    //   <div className="relative">
+    //     <button
+    //       className="btn bg-slate-700 absolute text-white right-0 p-2 rounded-md"
+    //       onClick={() => {
+    //         navigator.clipboard.writeText(value?.rich_text[0]?.plain_text);
+    //       }}
+    //     >
+    //       Copy
+    //     </button>
+    //     <div className="max-w-full overflow-scroll">
+    //       <pre className="language-js">
+    //         <code className="language-js">
+    //           {value?.rich_text[0]?.plain_text}
+    //         </code>
+    //       </pre>
 
-      //       {/* <SyntaxHighlighter
-      //         language="typescript"
-      //         style={atomDark}
-      //         // className="overflow-scroll"
-      //         // customStyle={{
-      //         //   overflowX: "scroll",
-      //         // }}
-      //       >
-      //         {value?.rich_text[0]?.plain_text}
-      //       </SyntaxHighlighter> */}
-      //     </div>
-      //   </div>
-      // );
+    //       {/* <SyntaxHighlighter
+    //         language="typescript"
+    //         style={atomDark}
+    //         // className="overflow-scroll"
+    //         // customStyle={{
+    //         //   overflowX: "scroll",
+    //         // }}
+    //       >
+    //         {value?.rich_text[0]?.plain_text}
+    //       </SyntaxHighlighter> */}
+    //     </div>
+    //   </div>
+    // );
     default:
       return `❌ Unsupported block (${
         type === "unsupported" ? "unsupported by Notion API" : type
