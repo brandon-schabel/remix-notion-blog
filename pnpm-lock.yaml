@@ -1,7 +1,6 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@babel/runtime': ^7.20.6
   '@notionhq/client': ^2.2.2
   '@remix-run/dev': ^1.7.5
   '@remix-run/eslint-config': ^1.7.5
@@ -36,7 +35,6 @@ dependencies:
   react-dom: 18.2.0_react@18.2.0
 
 devDependencies:
-  '@babel/runtime': 7.20.6
   '@remix-run/dev': 1.7.5_67odqug3q6zvwws4422s5yrks4
   '@remix-run/eslint-config': 1.7.5_wkk5idserszv2evrjfpa24rble
   '@remix-run/serve': 1.7.5_biqbaboplfbrettd7655fr4n2y
