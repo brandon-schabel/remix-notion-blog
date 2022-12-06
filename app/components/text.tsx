@@ -1,6 +1,6 @@
 import classNames from "classnames";
 
-export const Text = ({ text }: { text: any }) => {
+export const Text = ({ text, className }: { text: any, className?: string }) => {
   if (!text) {
     return null;
   }
@@ -12,7 +12,7 @@ export const Text = ({ text }: { text: any }) => {
     } = value;
     return (
       <span
-        className={classNames({
+        className={classNames(className, {
           "font-bold": bold,
           "font-italic": italic,
           "font-mono bg-neutral-400 py-1 px-2 rounded-sm": code,

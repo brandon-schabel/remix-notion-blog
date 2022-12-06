@@ -2,6 +2,16 @@ import { ClientBlock } from "~/components/client-block";
 import { CodeBlock } from "~/components/code-block";
 import { Text } from "~/components/text";
 
+const BlockWrapper = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <div className="leading-normal mt-[2px] mb-[1px] whitespace-pre-wrap py-[3px] px-[2px] break-words min-h-[1em]"
+    // style={{minHeight: '1em'}}
+    >
+      {children}
+    </div>
+  );
+};
+
 export const renderBlock = (block: any) => {
   const { type, id } = block;
   const value = block[type];
@@ -9,34 +19,44 @@ export const renderBlock = (block: any) => {
   switch (type) {
     case "paragraph":
       return (
-        <p>
-          <Text text={value.rich_text} />
-        </p>
+        <BlockWrapper>
+          <p>
+            <Text text={value.rich_text} />
+          </p>
+        </BlockWrapper>
       );
     case "heading_1":
       return (
-        <h1>
-          <Text text={value.rich_text} />
-        </h1>
+        <BlockWrapper>
+          <h1>
+            <Text text={value.rich_text} />
+          </h1>
+        </BlockWrapper>
       );
     case "heading_2":
       return (
-        <h2>
-          <Text text={value.rich_text} />
-        </h2>
+        <BlockWrapper>
+          <h2>
+            <Text text={value.rich_text} />
+          </h2>
+        </BlockWrapper>
       );
     case "heading_3":
       return (
-        <h3>
-          <Text text={value.rich_text} />
-        </h3>
+        <BlockWrapper>
+          <h3>
+            <Text text={value.rich_text} />
+          </h3>
+        </BlockWrapper>
       );
     case "bulleted_list_item":
     case "numbered_list_item":
       return (
-        <li>
-          <Text text={value.rich_text} />
-        </li>
+        <BlockWrapper>
+          <li>
+            <Text text={value.rich_text} />
+          </li>
+        </BlockWrapper>
       );
     case "to_do":
       return (

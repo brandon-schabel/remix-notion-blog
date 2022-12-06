@@ -6,7 +6,7 @@ import { Text } from "~/components/text";
 import { tenMinutes, week } from "~/constants/caching-times";
 import { retrieveNotionBlock, retrieveNotionPage } from "~/utils/notion.server";
 import { renderBlock } from "~/utils/render-block";
-import prismCss from "../../styles/prism.css";
+import prismCss from "../styles/prism.css";
 
 export function links() {
   return [{ rel: "stylesheet", href: prismCss }];
@@ -47,7 +47,8 @@ export default function () {
 
   return (
     <div className="w-full flex justify-center">
-      <div className="lg:max-w-5xl">
+      <div className="max-w-full w-[900px]">
+        <div className="px-6 md:px-24">
         <div className="flex flex-col justify-center items-center font-bold text-4xl">
           <h1>
             {/* render the page title */}
@@ -62,6 +63,7 @@ export default function () {
             <Fragment key={block.id}>{renderBlock(block)}</Fragment>
           ))}
         </section>
+        </div>
       </div>
     </div>
   );
