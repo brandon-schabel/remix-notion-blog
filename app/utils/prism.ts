@@ -139,7 +139,7 @@ var _self =
         },
         plugins: {},
         highlightAll: function (e, n) {
-            if(typeof document === 'undefined') return;
+          if (typeof document === "undefined") return;
           a.highlightAllUnder(document, e, n);
         },
         highlightAllUnder: function (e, n, t) {

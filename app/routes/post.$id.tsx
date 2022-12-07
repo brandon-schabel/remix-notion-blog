@@ -4,9 +4,9 @@ import { Fragment } from "react";
 import { PageImage } from "~/components/page-image";
 import { Text } from "~/components/text";
 import { tenMinutes, week } from "~/constants/caching-times";
+import prismCss from "~/styles/prism.css";
 import { retrieveNotionBlock, retrieveNotionPage } from "~/utils/notion.server";
 import { renderBlock } from "~/utils/render-block";
-import prismCss from "../styles/prism.css";
 
 export function links() {
   return [{ rel: "stylesheet", href: prismCss }];
@@ -49,20 +49,20 @@ export default function () {
     <div className="w-full flex justify-center">
       <div className="max-w-full w-[900px]">
         <div className="px-6 md:px-24">
-        <div className="flex flex-col justify-center items-center font-bold text-4xl">
-          <h1>
-            {/* render the page title */}
-            <Text text={page?.properties?.Name.title} />
-          </h1>
-          {/* page image component */}
-          <PageImage page={page} />
-        </div>
-        <section>
-          {/* iterate through all blocks and render out all the data */}
-          {blocks.map((block) => (
-            <Fragment key={block.id}>{renderBlock(block)}</Fragment>
-          ))}
-        </section>
+          <div className="flex flex-col justify-center items-center font-bold text-4xl">
+            <h1>
+              {/* render the page title */}
+              <Text text={page?.properties?.Name.title} />
+            </h1>
+            {/* page image component */}
+            <PageImage page={page} />
+          </div>
+          <section>
+            {/* iterate through all blocks and render out all the data */}
+            {blocks.map((block) => (
+              <Fragment key={block.id}>{renderBlock(block)}</Fragment>
+            ))}
+          </section>
         </div>
       </div>
     </div>

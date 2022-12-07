@@ -1,6 +1,12 @@
 import classNames from "classnames";
 
-export const Text = ({ text, className }: { text: any, className?: string }) => {
+export const Text = ({
+  text,
+  className, 
+}: {
+  text: any;
+  className?: string;
+}) => {
   if (!text) {
     return null;
   }
@@ -20,8 +26,13 @@ export const Text = ({ text, className }: { text: any, className?: string }) => 
           underline: underline,
         })}
         style={color !== "default" ? { color } : {}}
+        key={text?.link ? text.link : text?.content || "No Content"}
       >
-        {text?.link ? <a href={text?.link?.url}>{text.content}</a> : text?.content ||'No Content'}
+        {text?.link ? (
+          <a href={text?.link?.url}>{text.content}</a>
+        ) : (
+          text?.content || "No Content" 
+        )}
       </span>
     );
   });

@@ -4,9 +4,7 @@ import { Text } from "~/components/text";
 
 const BlockWrapper = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="leading-normal mt-[2px] mb-[1px] whitespace-pre-wrap py-[3px] px-[2px] break-words min-h-[1em]"
-    // style={{minHeight: '1em'}}
-    >
+    <div className="leading-normal mt-[2px] mb-[1px] whitespace-pre-wrap py-[3px] px-[2px] break-words min-h-[1em]">
       {children}
     </div>
   );

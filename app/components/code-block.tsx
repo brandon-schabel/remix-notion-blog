@@ -20,8 +20,9 @@ export const CodeBlock = ({ text }: { text: string }) => {
         Copy
       </button>
       <div className="max-w-[90vw] lg:max-w-full w-full">
-        <pre className="language-tsx ">
-          <code className="language-tsx ">{text}</code>
+        {/* language-tsx tag is for the code-syntax highlighting for Prism */}
+        <pre className="language-tsx">
+          <code className="language-tsx">{text}</code>
         </pre>
       </div>
     </div>
