@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import Prism from "~/utils/prism";
+import { CopyButton } from "./copy-button";
 
 export const CodeBlock = ({ text }: { text: string }) => {
   useEffect(() => {
@@ -11,14 +12,7 @@ export const CodeBlock = ({ text }: { text: string }) => {
 
   return (
     <div className="relative flex justify-center">
-      <button
-        className="btn bg-slate-700 absolute text-white right-2 p-2 rounded-md"
-        onClick={() => {
-          navigator.clipboard.writeText(text);
-        }}
-      >
-        Copy
-      </button>
+      <CopyButton copyData={text} className="absolute right-2 top-2 p-2 text-white" />
       <div className="max-w-[90vw] lg:max-w-full w-full">
         {/* language-tsx tag is for the code-syntax highlighting for Prism */}
         <pre className="language-tsx">
