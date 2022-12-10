@@ -1,34 +1,71 @@
-# Welcome to Remix!
+# Blog With Remix and Notion
 
-- [Remix Docs](https://remix.run/docs)
+I wrote a [blog article](https://www.blackcathacks.com/post/b5e5b146-03c0-4380-8ed4-f01499087356) on how this blog was made in detail. If you don't care and you just want to get everything setup as quickly as possible. 
 
-## Deployment
+# IMPORTANT IF YOU'RE READING THE BLOG
+If you want the code from the blog post, you can switch to the `blog-post` branch. This project will contain additional features built on top of the content from the blog. I didn't want the blog post to get overly complex.
 
-After having run the `create-remix` command and selected "Vercel" as a deployment target, you only need to [import your Git repository](https://vercel.com/new) into Vercel, and it will be deployed.
+## install packages
 
-If you'd like to avoid using a Git repository, you can also deploy the directory by running [Vercel CLI](https://vercel.com/cli):
+In this project I used [pnpm](https://pnpm.io/installation) as my package manager, of course you
+can use any package manger.
+pnpm:
 
 ```sh
-npm i -g vercel
-vercel
+pnpm install
 ```
 
-It is generally recommended to use a Git repository, because future commits will then automatically be deployed by Vercel, through its [Git Integration](https://vercel.com/docs/concepts/git).
-
-## Development
-
-To run your Remix app locally, make sure your project's local dependencies are installed:
+or npm:
 
 ```sh
 npm install
 ```
 
-Afterwards, start the Remix development server like so:
+## Setting Up and Configuring Notion
+
+Step 1:
+If you have not created a Notion workspace you will need at least one that you have created.
+Go to [your integrations](https://www.notion.so/my-integrations) on notion. Create a new integration. Give it a name, and for the purposes of this blog you will just need "read content" under content capabilities. Once the integration is created you're going to want to save/copy the "internal integration token" to be used in a later step.
+
+Step 2:
+Create a new Notion page.
+
+Step 3:
+Within that page create a list view with a new database.
+
+Step 4:
+Add the following properties to the database
+-“Post Image” as the Files and Media  
+-“Public” as the checkbox type
+-“Sub Title” as text type
+-“last edited time” type - you do not need to specify a name for this, this is a default property that already has a name assigned.
+
+Step 5:
+In your database list view, click the 3 dots in the very top right corner of Notion and click "+ Add Connections" and select the name of the integration you named in step 1.
+
+Step 6:
+Again make sure you're in the database list view, click on "share" in the upper right hand corner and then click "copy link", paste that link somewhere and it should look something like:
+https://www.notion.so/5a39cf71903a4fddf030q09834caedaf7f6?v=9361234d1baec49828b20daf092322
+Pay close attention - to get the database ID you want to copy everything after notion.so/ and before the ?v=
+So in this example your database ID would be 5a39not71903a4your030q09834database7f6
+
+Step 7:
+Change .env.example to .env
+Then update NOTION_DATABASE with the notion database key you obtained from the previous step.
+Then Set NOTION_API_KEY to the "internal integration token" you copied in step 1.
+
+## Launch The App!
 
 ```sh
-npm run dev
+pnpm run dev
 ```
 
 Open up [http://localhost:3000](http://localhost:3000) and you should be ready to go!
 
-If you're used to using the `vercel dev` command provided by [Vercel CLI](https://vercel.com/cli) instead, you can also use that, but it's not needed.
+## Simple deployment with Vercel
+
+[import your Git repository](https://vercel.com/new) into Vercel, and it will be deployed.
+
+Of course you can use the Vercel CLI. Remix has documentation on this so if you wanted to do that you can follow that guide.
+
+- [Remix Docs](https://remix.run/docs)
