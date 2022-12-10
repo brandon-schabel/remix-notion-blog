@@ -35,10 +35,10 @@ Within that page create a list view with a new database.
 
 Step 4:
 Add the following properties to the database
--“Post Image” as the Files and Media  
--“Public” as the checkbox type
--“Sub Title” as text type
--“last edited time” type - you do not need to specify a name for this, this is a default property that already has a name assigned.
+- “Post Image” as the Files and Media  
+- “Public” as the checkbox type
+- “Sub Title” as text type
+- “last edited time” type - you do not need to specify a name for this, this is a default property that already has a name assigned.
 
 Step 5:
 In your database list view, click the 3 dots in the very top right corner of Notion and click "+ Add Connections" and select the name of the integration you named in step 1.
