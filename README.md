@@ -1,6 +1,6 @@
 # Blog With Remix and Notion
 
-I wrote a [blog article](https://www.blackcathacks.com/post/b5e5b146-03c0-4380-8ed4-f01499087356) on how this blog was made in detail and contains more detailed Notion setup instructions. If you don't care and you just want to get everything setup as quickly as possible. 
+I wrote a [blog article](https://www.blackcathacks.com/post/b5e5b146-03c0-4380-8ed4-f01499087356) on how this blog was made in detail and contains more detailed Notion setup instructions. If you don't care and you just want to get everything setup as quickly as possible follow the directions below. 
 
 # IMPORTANT IF YOU'RE READING THE BLOG
 If you want the completed code from the blog post, you can switch to the `blog-post-completed` branch. This project's main branch will contain additional features built on top of the content from the blog. I didn't want the blog post to get overly complex.
