@@ -27,7 +27,7 @@ export const renderBlock = (block: any) => {
       return (
         <BlockWrapper>
           <h1>
-            <Text text={value.rich_text} />
+            <Text text={value.rich_text} className="text-3xl font-bold" />
           </h1>
         </BlockWrapper>
       );
@@ -35,7 +35,7 @@ export const renderBlock = (block: any) => {
       return (
         <BlockWrapper>
           <h2>
-            <Text text={value.rich_text} />
+            <Text text={value.rich_text} className="text-2xl font-bold" />
           </h2>
         </BlockWrapper>
       );
@@ -43,7 +43,7 @@ export const renderBlock = (block: any) => {
       return (
         <BlockWrapper>
           <h3>
-            <Text text={value.rich_text} />
+            <Text text={value.rich_text} className="text-xl font-bold" />
           </h3>
         </BlockWrapper>
       );
