@@ -36,10 +36,10 @@ export default function Index() {
             <Link to={`/post/${page.id}`}>
               {/* we use a component to grab the pages image */}
               <div className="flex justify-center items-center w-full">
-                <PageImage page={page} />
+                <PageImage page={page} size="lg" />
               </div>
 
-              <div className="font-bold text-xl text-center max-w-md py-2">
+              <div className="flex justify-center items-center font-bold text-xl text-center max-w-md py-2 w-full">
                 {/* return Text component that grabs the pages title  */}
                 {getPageTitle(page)}
               </div>

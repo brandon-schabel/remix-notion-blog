@@ -17,11 +17,11 @@ export const PageImage = ({
   return (
     <img
       src={pageImageUrl}
-      width="auto"
+      height="auto"
       className={classNames("rounded-lg shadow-md object-cover", {
-        "h-32": size === "sxm",
-        "h-64": size === "md",
-        "h-96": size === "lg",
+        "w-32": size === "sm",
+        "w-64": size === "md",
+        "w-96": size === "lg",
       })}
     />
   );
