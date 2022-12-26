@@ -19,9 +19,13 @@ export const retrieveNotionPage = async (pageId: string) => {
   return response;
 };
 
-export const retrieveNotionBlock = (blockId: string) => {
+export const retrieveNotionBlock = (
+  blockId: string,
+  nextCursor?: string | null
+) => {
   const response = notion.blocks.children.list({
     block_id: blockId,
+    ...(nextCursor ? { start_cursor: nextCursor } : {}),
   });
   return response;
 };

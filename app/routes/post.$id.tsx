@@ -33,8 +33,25 @@ export async function loader({ params }: LoaderArgs) {
 
   try {
     const blocksResult = await retrieveNotionBlock(page.id);
-
+    
     blocks = blocksResult.results;
+    
+    let currentCursor = blocksResult?.next_cursor || null;
+    let hasMore = blocksResult.has_more;
+    
+    // continue fetching until blocks.has_more is false,
+    // i tried increasing page size, but that didn't work
+    while (hasMore) {
+      const additionalBlocks = await retrieveNotionBlock(
+        page.id,
+        currentCursor
+      );
+
+      blocks = [...blocks, ...additionalBlocks.results];
+
+      currentCursor = additionalBlocks?.next_cursor || null;
+      hasMore = additionalBlocks.has_more;
+    }
   } catch (e) {
     console.error(e);
   }

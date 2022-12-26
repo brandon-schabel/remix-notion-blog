@@ -599,10 +599,6 @@ video {
   margin-right: 1.5rem;
 }
 
-.mt-4 {
-  margin-top: 1rem;
-}
-
 .mr-4 {
   margin-right: 1rem;
 }
@@ -625,6 +621,10 @@ video {
 
 .flex {
   display: flex;
+}
+
+.list-item {
+  display: list-item;
 }
 
 .hidden {
@@ -661,10 +661,6 @@ video {
 
 .h-32 {
   height: 8rem;
-}
-
-.h-3 {
-  height: 0.75rem;
 }
 
 .h-64 {
@@ -719,8 +715,8 @@ video {
   width: 8rem;
 }
 
-.w-3 {
-  width: 0.75rem;
+.w-auto {
+  width: auto;
 }
 
 .w-fit {
@@ -730,10 +726,6 @@ video {
 
 .w-\[900px\] {
   width: 900px;
-}
-
-.w-auto {
-  width: auto;
 }
 
 .max-w-\[90vw\] {
@@ -750,6 +742,10 @@ video {
 
 .resize {
   resize: both;
+}
+
+.list-disc {
+  list-style-type: disc;
 }
 
 .flex-col {
@@ -784,25 +780,12 @@ video {
   border-radius: 9999px;
 }
 
-.rounded {
-  border-radius: 0.25rem;
-}
-
 .rounded-lg {
   border-radius: 0.5rem;
 }
 
 .rounded-sm {
   border-radius: 0.125rem;
-}
-
-.border {
-  border-width: 1px;
-}
-
-.border-teal-400 {
-  --tw-border-opacity: 1;
-  border-color: rgb(45 212 191 / var(--tw-border-opacity));
 }
 
 .bg-green-400 {
@@ -818,10 +801,6 @@ video {
 .bg-neutral-400 {
   --tw-bg-opacity: 1;
   background-color: rgb(163 163 163 / var(--tw-bg-opacity));
-}
-
-.fill-current {
-  fill: currentColor;
 }
 
 .p-2 {
@@ -840,16 +819,6 @@ video {
 .py-3 {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
-}
-
-.px-3 {
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-}
-
-.py-2 {
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
 }
 
 .py-1 {
@@ -888,11 +857,6 @@ video {
 .text-xl {
   font-size: 1.25rem;
   line-height: 1.75rem;
-}
-
-.text-sm {
-  font-size: 0.875rem;
-  line-height: 1.25rem;
 }
 
 .text-lg {
@@ -986,11 +950,6 @@ video {
   transition-duration: 500ms;
 }
 
-.hover\:border-white:hover {
-  --tw-border-opacity: 1;
-  border-color: rgb(255 255 255 / var(--tw-border-opacity));
-}
-
 .hover\:text-white:hover {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
@@ -1004,39 +963,7 @@ video {
 }
 
 @media (min-width: 1024px) {
-  .lg\:mt-0 {
-    margin-top: 0px;
-  }
-
-  .lg\:block {
-    display: block;
-  }
-
-  .lg\:inline-block {
-    display: inline-block;
-  }
-
-  .lg\:flex {
-    display: flex;
-  }
-
-  .lg\:hidden {
-    display: none;
-  }
-
-  .lg\:w-auto {
-    width: auto;
-  }
-
   .lg\:max-w-full {
     max-width: 100%;
-  }
-
-  .lg\:flex-grow {
-    flex-grow: 1;
-  }
-
-  .lg\:items-center {
-    align-items: center;
   }
 }
