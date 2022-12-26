@@ -33,12 +33,12 @@ export async function loader({ params }: LoaderArgs) {
 
   try {
     const blocksResult = await retrieveNotionBlock(page.id);
-    
+
     blocks = blocksResult.results;
-    
+
     let currentCursor = blocksResult?.next_cursor || null;
     let hasMore = blocksResult.has_more;
-    
+
     // continue fetching until blocks.has_more is false,
     // i tried increasing page size, but that didn't work
     while (hasMore) {
@@ -72,7 +72,9 @@ export default function () {
               <Text text={page?.properties?.Name.title} />
             </h1>
             {/* page image component */}
-            <PageImage page={page} />
+            <div className="flex items-center pt-4 pb-2">
+              <PageImage page={page} size="lg" />
+            </div>
           </div>
           <section>
             {/* iterate through all blocks and render out all the data */}

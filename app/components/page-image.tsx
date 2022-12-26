@@ -18,7 +18,7 @@ export const PageImage = ({
     <img
       src={pageImageUrl}
       width="auto"
-      className={classNames("rounded-lg shadow-md w-fit", {
+      className={classNames("rounded-lg shadow-md object-cover", {
         "h-32": size === "sxm",
         "h-64": size === "md",
         "h-96": size === "lg",

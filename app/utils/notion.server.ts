@@ -5,7 +5,7 @@ export const retrieveNotionDatabase = async (databaseId: string) => {
   const response = await notion.databases.query({
     database_id: databaseId,
     // sort by the most recently created posts
-    sorts: [{ property: "Created", direction: "ascending" }],
+    sorts: [{ property: "Created", direction: "descending" }],
     // filter out any posts that are not published
     filter: { property: "Public", checkbox: { equals: true } },
   });

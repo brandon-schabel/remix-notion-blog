@@ -27,19 +27,19 @@ export default function Index() {
   const { pages } = useLoaderData<typeof loader>();
 
   return (
-    <div className="flex flex-col justify-center items-center w-full">
+    <div className="flex flex-col justify-center items-center w-full my-4 space-y-4">
       {pages.results.map((page: any) => {
         // here we iterate over the pages and render a link to each page
         // along with the title, subtitle, and created date
         return (
           <div key={page.id}>
             <Link to={`/post/${page.id}`}>
-              <div className="shadow-md">
-                {/* we use a component to grab the pages image */}
+              {/* we use a component to grab the pages image */}
+              <div className="flex justify-center items-center w-full">
                 <PageImage page={page} />
               </div>
 
-              <div className="font-bold text-lg text-center">
+              <div className="font-bold text-xl text-center max-w-md py-2">
                 {/* return Text component that grabs the pages title  */}
                 {getPageTitle(page)}
               </div>
@@ -48,7 +48,9 @@ export default function Index() {
                 <div>{getPageSubTitle(page)}</div>
               </div>
 
-              <div>{getPostCreatedAt(page).toDateString()}</div>
+              <div className="flex justify-center opacity-50">
+                {getPostCreatedAt(page).toDateString()}
+              </div>
             </Link>
           </div>
         );
