@@ -67,7 +67,7 @@ export default function () {
       <div className="max-w-full w-[900px]">
         <div className="px-6 md:px-24">
           <div className="flex flex-col justify-center items-center font-bold text-4xl">
-            <h1>
+            <h1 className="my-4 text-center ">
               {/* render the page title */}
               <Text text={page?.properties?.Name.title} />
             </h1>
