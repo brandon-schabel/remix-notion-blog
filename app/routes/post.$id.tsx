@@ -7,6 +7,7 @@ import { tenMinutes, week } from "~/constants/caching-times";
 import prismCss from "~/styles/prism.css";
 import { retrieveNotionBlock, retrieveNotionPage } from "~/utils/notion.server";
 import { renderBlock } from "~/utils/render-block";
+import { getPageMainImageUrl } from "~/utils/render-utils";
 
 export function links() {
   return [{ rel: "stylesheet", href: prismCss }];
@@ -19,10 +20,20 @@ export function headers() {
 }
 
 export const meta: MetaFunction = ({ data }) => {
+  const title = data?.page?.properties?.Name?.title[0]?.plain_text;
+  const description = `Read this blog post about ${title}`;
   return {
     charset: "utf-8",
     title: data?.page?.properties?.Name?.title[0]?.plain_text || "Blog Article",
     viewport: "width=device-width,initial-scale=1",
+    "twitter:card": "summary_large_image",
+    "twitter:image": getPageMainImageUrl(data?.page),
+    "twitter:title": title || "",
+    "twitter:description": description,
+    description: description,
+    "og:image": getPageMainImageUrl(data?.page),
+    "og:title": title || "",
+    "og:description": description,
   };
 };
 
