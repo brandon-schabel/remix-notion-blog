@@ -21,18 +21,19 @@ export function headers() {
 
 export const meta: MetaFunction = ({ data }) => {
   const title = data?.page?.properties?.Name?.title[0]?.plain_text;
-  const description = `Read this blog post about ${title}`;
+  const description = `Read this blog post about ${title}` || "Blog Article";
+  const image = getPageMainImageUrl(data?.page);
   return {
     charset: "utf-8",
-    title: data?.page?.properties?.Name?.title[0]?.plain_text || "Blog Article",
+    title: title,
     viewport: "width=device-width,initial-scale=1",
     "twitter:card": "summary_large_image",
-    "twitter:image": getPageMainImageUrl(data?.page),
-    "twitter:title": title || "",
+    "twitter:image": image,
+    "twitter:title": title,
     "twitter:description": description,
     description: description,
-    "og:image": getPageMainImageUrl(data?.page),
-    "og:title": title || "",
+    "og:image": image,
+    "og:title": title,
     "og:description": description,
   };
 };
