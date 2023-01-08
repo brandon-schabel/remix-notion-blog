@@ -7,9 +7,12 @@ import {
   ScrollRestoration,
   useLoaderData
 } from "@remix-run/react";
+import { inject } from "@vercel/analytics";
 import Navbar from "./components/navbar";
 
 import styles from "./styles/app.css";
+
+inject();
 
 export function links() {
   return [{ rel: "stylesheet", href: styles }];
