@@ -7,6 +7,7 @@ export const Navbar = ({
   logoUrl?: string;
   navTitle?: string;
 }) => {
+
   return (
     <nav className="flex items-center justify-between px-4 py-3 bg-gray-800">
       <div className="flex items-center flex-shrink-0 text-white mr-6">
