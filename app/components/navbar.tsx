@@ -26,6 +26,14 @@ export const Navbar = ({
         >
           Home
         </Link>
+
+        <Link
+          className="inline-block text-teal-200 hover:text-white mr-4"
+          to={"/about"}
+        >
+          About
+        </Link>
+        
       </div>
     </nav>
   );
